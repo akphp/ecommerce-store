@@ -22,6 +22,8 @@ Route::get('/', 'SiteController@index')->name('home');
 Route::get('/changeLanguage/{lang}' , 'SiteController@changeLanguage')->name('lang');
 Route::get('/product/{id}' , 'ProductController@show')->name('details');;
 Route::get('/product/favorite/{id}' , 'ProductController@favorite')->name('favorite');;
+Route::get('/product/favorite/{id}/delete' , 'ProductController@delete')->name('favorite.delete');;
+
 
 Route::get('/products/{id}' , 'ProductController@products')->name('products');;
 
@@ -48,7 +50,9 @@ Route::group(['namespace' => 'Users' , 'middleware' => 'guest'  , 'prefix' => 'a
         Route::post('/register' , 'LoginController@postRegister')->name('post.register');
 
         Route::get('/profile' , 'LoginController@profile')->name('profile');
+        Route::get('/wishlist' , 'LoginController@wishlist')->name('wishlist');
 
+        
         Route::get('/logout' , 'LoginController@logout')->name('logout');
     });
 

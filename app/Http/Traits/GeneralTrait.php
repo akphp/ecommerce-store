@@ -77,6 +77,45 @@ trait GeneralTrait {
 
 
 
+    public function deleteFavorite($id) {        
+      $data1 = [
+        'product_id' => $id,
+    ];
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+          CURLOPT_URL => env('API_URL')."customers/products/favorite?product_id=".$id,
+          CURLOPT_RETURNTRANSFER => true,
+          CURLOPT_ENCODING => "",
+          CURLOPT_MAXREDIRS => 10,
+          CURLOPT_TIMEOUT => 30,
+          CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+          CURLOPT_CUSTOMREQUEST => "DELETE",
+          // CURLOPT_POSTFIELDS => $data1,
+ 
+          CURLOPT_HTTPHEADER => array(
+            "Cache-Control: no-cache",
+            "brand-id:".env('BRAND_ID'),
+            "api-token:".Session::get('user')['api_token'] ,
+            "X-localization:ar",
+            "channel:web",
+
+
+          ),
+         
+        ) );
+        
+        $favorite_delete = curl_exec($curl);
+        $favorite_delete = json_decode($favorite_delete , true);
+        $err = curl_error($curl);
+        
+        curl_close($curl);
+
+        return $favorite_delete;
+
+    }
+
+
 
     public function getProductByCat($id , $pageNumber , $n, $order_by)
     {

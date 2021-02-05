@@ -140,11 +140,8 @@ class LoginController extends Controller
           
       if ($register['success'] == true) {
 
-        $login = json_decode ($this->customersLogin($email , $password) ,true ) ;
-          Session::put('user', $register['data']);
-
           session()->flash('Add',  __('admin.loginSucc'));
-          return Redirect::to('/')->with('success', $register['message']);
+          return Redirect::to('/auth/login')->with('success', $register['message']);
       
       } else {
         // dd($login['message']);
@@ -161,9 +158,21 @@ class LoginController extends Controller
       // dd(  Session::get('user') );
       $favorite = $this->getFavorite();
       // dd($favorite);
-      return view('auth.profile' , compact('favorite'));
+      return view('auth.profile' , ['favorite' => $favorite['data']]);
       
     }
+
+    
+    public function wishlist()
+    {
+      // dd(  Session::get('user') );
+      $favorite = $this->getFavorite();
+      // dd($favorite);
+      return view('auth.wishlist' , ['favorite' => $favorite['data']]);
+      
+    }
+
+    
 
 
     public function getFavorite()

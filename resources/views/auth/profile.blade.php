@@ -207,26 +207,25 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @if($favorite)
+                                        @foreach($favorite as $item)
+                                            
                                         <tr>
                                             <td class="product-remove"> <a href="#"><i class="fa fa-times" aria-hidden="true"></i></a></td>
                                             <td class="product-thumbnail">
-                                                <a href="#"><img src="{{ url('/') }}/website/img/products/6.jpg" alt="cart-image" /></a>
+                                                <a href="#"><img src="{{ $item['imagefullpath']}}" alt="{{ $item['name_ar'] }}" /></a>
                                             </td>
-                                            <td class="product-name"><a href="#">Vestibulum suscipit</a></td>
-                                            <td class="product-price"><span class="amount">£165.00</span></td>
-                                            <td class="product-stock-status"><span>في المخزن</span></td>
+                                            <td class="product-name"><a href="#"> {{ $item['name_ar'] }}</a></td>
+                                            <td class="product-price"><span class="amount">${{ $item['price'] }} </span></td>
+                                            <td class="product-stock-status"><span> {{ $item['product_status']['name'] == "Enabled" ? "متاح " : "غير متاح " }}  </span></td>
                                             <td class="product-add-to-cart "><a class="bdred" href="#">أضف إلى السلة</a></td>
                                         </tr>
-                                        <tr>
-                                            <td class="product-remove"> <a href="#"><i class="fa fa-times" aria-hidden="true"></i></a></td>
-                                            <td class="product-thumbnail">
-                                               <a href="#"><img src="{{ url('/') }}/website/img/products/22.jpg" alt="cart-image" /></a>
-                                            </td>
-                                            <td class="product-name"><a href="#">Vestibulum dictum magna</a></td>
-                                            <td class="product-price"><span class="amount">£50.00</span></td>
-                                            <td class="product-stock-status"><span>في المخزن</span></td>
-                                            <td class="product-add-to-cart"><a class="bdred"  href="#">أضف إلى السلة</a></td>
-                                        </tr>
+                                        @endforeach
+
+                                        @else
+                                        <h4> لا يوجد منتجات مضافة بعد </h4>
+                                        @endif
+                                     
                                     </tbody>
                                 </table>
                             </div>

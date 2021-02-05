@@ -42,12 +42,27 @@ class ProductController extends Controller
           return Redirect()->back()->with('success', $favorite['message']);
       
       } else {
-        // dd($login['message']);
-        // dd($favorite);
         session()->flash('Add',  $favorite['data'][0]);
 
           return Redirect::back()
           ->withErrors([$favorite['message'] ]);
+      }
+    }
+
+    public function delete($id)
+    {
+      $favorite_delete = $this->deleteFavorite($id);
+
+        if ($favorite_delete['success'] == true) {
+
+          session()->flash('Add',  __('admin.addFavoriteS'));
+          return Redirect()->back()->with('success', $favorite_delete['message']);
+      
+      } else {
+        session()->flash('Add',  $favorite_delete['data'][0]);
+
+          return Redirect::back()
+          ->withErrors([$favorite_delete['message'] ]);
       }
     }
 

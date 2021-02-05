@@ -160,11 +160,8 @@
                         <div class="toolbar-sorter d-md-flex align-items-center">
                             <label>ترتيب حسب:</label>
                             <select class="sorter wide">
-                                <option value="Position">Relevance</option>
-                                <option value="Product Name">Neme, A to Z</option>
-                                <option value="Product Name">Neme, Z to A</option>
-                                <option value="Price">Price low to heigh</option>
-                                <option value="Price">Price heigh to low</option>
+                                <option value="DESC">تصاعدى </option>
+                                <option value="ASC">تنازلى </option>
                             </select>
                         </div>
                     </div>

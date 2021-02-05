@@ -14,7 +14,7 @@
                                 <a href="#"> <span> دعم متواصل</span></a>
                             </li>
                             <li>
-                                <a href="#"> <span> المفضلة لدي</span></a>
+                                <a href="{{ route('wishlist') }}"> <span> المفضلة لدي</span></a>
                             </li>
                         
 
@@ -135,7 +135,7 @@
                                     <li><a href="{{ route('profile') }}"><ion-icon name="person-outline"></ion-icon>الملف الشخصى </a></li>
                                     <li><a href="#"><ion-icon  class="ml-2"  name="file-tray-full-outline"></ion-icon>الطلبات 
                                     </a></li>
-                                    <li><a href="#"><i
+                                    <li><a href="{{ route('wishlist') }}"><i
                                         class="ion-android-favorite-outline ml-2"></i>المفضلة  
                                     </a></li>
                                     <li><a href="#"><ion-icon class="ml-2" name="logo-alipay"></ion-icon> الدفع  </a></li>
